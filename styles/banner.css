@@ -1,0 +1,103 @@
+.banner {
+    padding: 24px 0 206px;
+    background: #F5F5F7 url('../img/bg_mob.jpg') bottom/320px no-repeat;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.banner__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner__title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.banner__subtitle {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.banner__timer {
+    margin-bottom: 36px;
+}
+
+.banner__button {
+    border-radius: 32px;
+    border: 1px solid #70A5D4;
+    padding: 16px 20px;
+
+    font-size: 14px;
+    line-height: 100%; 
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.banner__button:hover,
+.banner__button:focus {
+    background-color: #fff;
+}
+
+.banner__button:active {
+    background-color: #2238FF;
+    color: #fff;
+}
+
+
+@media (min-width: 768px) {
+    .banner {
+        padding: 60px 0 90px;
+        background-image: url('../img/bg_tab.jpg');
+        background-position: bottom;
+        /* размер картинки зависит отразмеров блока */
+        background-size: contain;
+    }
+
+    .banner__content {
+        max-width: 331px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .banner {
+        padding: 120px 0 160px;
+        background-image: url('../img/bg_lap.jpg');
+        margin-bottom: 70px;
+    }
+
+    .banner__title {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .banner__subtitle {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+
+    .banner__timer {
+        margin-bottom: 56px;
+    }
+
+    .banner__button {
+        font-size: 16px;
+    }
+
+    .banner__content {
+        max-width: 510px;
+    }
+
+}
+
+
+@media (min-width: 1200px) {
+    .banner {
+        background-image: url('../img/bg.jpg');
+    }
+}
