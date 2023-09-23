@@ -204,4 +204,71 @@ fetch("https://api.apilayer.com/fixer/latest?base=USD", requestOptions)
 
 
 
-    
+/*** timer  01.01.1970 ***/ 
+
+/* Склонение числительных */
+const declOfNum = (n, titles) => titles[n % 10 === 1 && n % 100 !== 11 ?
+  0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2];
+
+const timer = deadline => {
+
+const unitDays = document.querySelector('.timer-unit_days');
+const unitHours = document.querySelector('.timer-unit_hours');
+const unitMinutes = document.querySelector('.timer-unit_minutes');
+
+const descriptionDays = document.querySelector('.timer__unit-description_days');
+const descriptionHours = document.querySelector('.timer__unit-description_hours');
+const descriptionMinutes = document.querySelector('.timer__unit-description_minutes');
+
+
+  const getTimeRemaning = () => {
+    const dateStop = new Date(deadline).getTime();
+  //  console.log('dateStop: ', dateStop)
+    const dateNow = Date.now();
+  //  console.log('dateNow: ', dateNow)
+  const timeRemaning = dateStop - dateNow;
+
+  /*
+  const ms = timeRemaning;
+  console.log('ms: ', ms)
+  const s = timeRemaning / 1000 % 60;
+  console.log('s: ', s)
+  */
+  const minutes = Math.floor(timeRemaning / 1000 / 60 % 60);
+  console.log('minutes: ', minutes)
+  const hours = Math.floor(timeRemaning / 1000 / 60 / 60 % 24);
+  console.log('hours : ', hours )
+  const days = Math.floor(timeRemaning / 1000 / 60 / 60 / 24);
+  console.log('days: ', days)
+
+  return {timeRemaning, minutes, hours, days}
+
+  }
+ // getTimeRemaning()
+  const start = () => {
+  const timer = getTimeRemaning();
+  console.log('timer: ', timer);
+
+  unitDays.textContent = timer.days;
+  unitHours.textContent = timer.hours;
+  unitMinutes.textContent = timer.minutes;
+
+  descriptionDays.textContent = declOfNum(timer.days, ['день', 'дня', 'дней']); 
+  descriptionHours.textContent = declOfNum(timer.hours, ['час', 'часа', 'часов']);  
+  descriptionMinutes.textContent = declOfNum(timer.minutes, ['минута', 'минуты', 'минут']);
+  
+  const timerId = setTimeout(start, 60000);
+
+  if (timer.timeRemaning < 0) {
+    clearTimeout(timerId)
+    unitDays.textContent = '0';
+    unitHours.textContent = '0';
+    unitMinutes.textContent = '0';
+    }
+
+}
+start();
+}
+  timer('2023/12/30 20:00') 
+
+/*** timer  01.01.1970 end ***/ 
